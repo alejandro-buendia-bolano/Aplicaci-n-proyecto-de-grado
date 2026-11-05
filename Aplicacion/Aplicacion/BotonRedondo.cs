@@ -7,7 +7,6 @@ namespace Aplicacion
 {
     public class BotonRedondo : Button
     {
-        // Propiedades para ajustar desde el diseñador
         public int RadioBorde { get; set; } = 30;
         public float TamañoBorde { get; set; } = 0;
         public Color ColorBorde { get; set; } = Color.PaleVioletRed;

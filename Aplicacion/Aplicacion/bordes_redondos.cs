@@ -14,7 +14,6 @@ namespace Aplicacion
             GraphicsPath ruta = new GraphicsPath();
             int d = radio * 2;
 
-            // Evitar errores si el control es más pequeño que el radio
             if (d > control.Width || d > control.Height) d = Math.Min(control.Width, control.Height);
 
             ruta.AddArc(0, 0, d, d, 180, 90);

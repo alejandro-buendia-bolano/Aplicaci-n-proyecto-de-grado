@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\asistenciadocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\asistenciadocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\aplicacion\\asistenciaestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\asistenciaestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\asistenciadocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\asistenciadocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\asistenciaestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\asistenciaestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\generarreportedocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\generarreportedocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\generarreporteestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\generarreporteestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\administrarestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\administrarestudiantes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|c:\\users\\qmass\\onedrive\\documentos\\proyecto de grado\\fase 3 implementacion\\aplicacion\\aplicacion\\administrardocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{318AC24A-840C-4D59-BB62-477179C24950}|Aplicacion\\Aplicacion.csproj|solutionrelative:aplicacion\\administrardocentes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +34,83 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "asistenciaDocentes.cs",
-              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\asistenciaDocentes.cs",
-              "RelativeDocumentMoniker": "Aplicacion\\asistenciaDocentes.cs",
-              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\asistenciaDocentes.cs",
-              "RelativeToolTip": "Aplicacion\\asistenciaDocentes.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AsistenciaEstudiantes.cs",
+              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\AsistenciaEstudiantes.cs",
+              "RelativeDocumentMoniker": "Aplicacion\\AsistenciaEstudiantes.cs",
+              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\AsistenciaEstudiantes.cs",
+              "RelativeToolTip": "Aplicacion\\AsistenciaEstudiantes.cs",
+              "ViewState": "AgIAAGsBAAAAAAAAAAArwHUBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T00:12:42.775Z",
+              "WhenOpened": "2026-11-05T06:25:27.883Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AsistenciaEstudiantes.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\AsistenciaEstudiantes.cs",
+              "RelativeDocumentMoniker": "Aplicacion\\AsistenciaEstudiantes.cs",
+              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\AsistenciaEstudiantes.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Aplicacion\\AsistenciaEstudiantes.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-22T04:33:37.58Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Home.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\Home.cs",
-              "RelativeDocumentMoniker": "Aplicacion\\Home.cs",
-              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\Home.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Aplicacion\\Home.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T23:37:00.89Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "asistenciaDocentes.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\asistenciaDocentes.cs",
-              "RelativeDocumentMoniker": "Aplicacion\\asistenciaDocentes.cs",
-              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\asistenciaDocentes.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Aplicacion\\asistenciaDocentes.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T00:10:16.861Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "generarReporteDocentes.cs",
               "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\generarReporteDocentes.cs",
               "RelativeDocumentMoniker": "Aplicacion\\generarReporteDocentes.cs",
               "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\generarReporteDocentes.cs",
               "RelativeToolTip": "Aplicacion\\generarReporteDocentes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEABAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T23:50:09.445Z",
+              "WhenOpened": "2026-11-05T05:19:35.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\Home.cs",
-              "RelativeDocumentMoniker": "Aplicacion\\Home.cs",
-              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\Home.cs",
-              "RelativeToolTip": "Aplicacion\\Home.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAwwHAAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "generarReporteEstudiantes.cs",
+              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\generarReporteEstudiantes.cs",
+              "RelativeDocumentMoniker": "Aplicacion\\generarReporteEstudiantes.cs",
+              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\generarReporteEstudiantes.cs",
+              "RelativeToolTip": "Aplicacion\\generarReporteEstudiantes.cs",
+              "ViewState": "AgIAAFUCAAAAAAAAAAAIwGUCAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T23:04:19.776Z",
+              "WhenOpened": "2026-11-05T05:19:13.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "administrarEstudiantes.cs",
+              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\administrarEstudiantes.cs",
+              "RelativeDocumentMoniker": "Aplicacion\\administrarEstudiantes.cs",
+              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\administrarEstudiantes.cs",
+              "RelativeToolTip": "Aplicacion\\administrarEstudiantes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-05T05:18:44.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "administrarDocentes.cs",
+              "DocumentMoniker": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\administrarDocentes.cs",
+              "RelativeDocumentMoniker": "Aplicacion\\administrarDocentes.cs",
+              "ToolTip": "C:\\Users\\qmass\\OneDrive\\Documentos\\PROYECTO DE GRADO\\Fase 3 Implementacion\\Aplicacion\\Aplicacion\\administrarDocentes.cs",
+              "RelativeToolTip": "Aplicacion\\administrarDocentes.cs",
+              "ViewState": "AgIAALEBAAAAAAAAAADgv40BAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-05T05:18:12.25Z",
               "EditorCaption": ""
             }
           ]

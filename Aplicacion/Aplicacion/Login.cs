@@ -1,69 +1,21 @@
 using System.Drawing.Drawing2D;
 using System.Data;
-using Microsoft.Data.SqlClient; // Usa esta en lugar de System.Data.SqlClient
+using Microsoft.Data.SqlClient;
 namespace Aplicacion
 {
     public partial class Login : Form
     {
         public string NombreDocente { get; set; }
-        private string primerNombre;
-        private int idDocente;
+        
         public Login()
         {
             InitializeComponent();
+            // Metodos para mejorar la interfaz 
             bordes_redondos.RedondearBordes(button5, 30);
             bordes_redondos.RedondearBordes(button4, 30);
             bordes_redondos.RedondearBordes(textBox1, 30);
             bordes_redondos.RedondearBordes(textBox2, 30);
             bordes_redondos.RedondearBordes(button3, 30);
-
-
-
-        }
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        public void RedondearBordes(Control control, int radio)
-        {
-            GraphicsPath ruta = new GraphicsPath();
-            int d = radio * 2;
-
-            // Crear la forma con arcos en las esquinas
-            ruta.AddArc(0, 0, d, d, 180, 90); // Superior izquierda
-            ruta.AddArc(control.Width - d, 0, d, d, 270, 90); // Superior derecha
-            ruta.AddArc(control.Width - d, control.Height - d, d, d, 0, 90); // Inferior derecha
-            ruta.AddArc(0, control.Height - d, d, d, 90, 90); // Inferior izquierda
-            ruta.CloseFigure();
-
-            control.Region = new Region(ruta);
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -140,6 +92,51 @@ namespace Aplicacion
 
 
         }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void RedondearBordes(Control control, int radio)
+        {
+            GraphicsPath ruta = new GraphicsPath();
+            int d = radio * 2;
+
+            // Crear la forma con arcos en las esquinas
+            ruta.AddArc(0, 0, d, d, 180, 90); // Superior izquierda
+            ruta.AddArc(control.Width - d, 0, d, d, 270, 90); // Superior derecha
+            ruta.AddArc(control.Width - d, control.Height - d, d, d, 0, 90); // Inferior derecha
+            ruta.AddArc(0, control.Height - d, d, d, 90, 90); // Inferior izquierda
+            ruta.CloseFigure();
+
+            control.Region = new Region(ruta);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
 
         private void label3_Click(object sender, EventArgs e)
         {

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
-using DPFP;
+﻿using DPFP;
 using DPFP.Capture;
 using DPFP.Verification;
+using iTextSharp.text.pdf.codec.wmf;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 namespace Aplicacion
 {
 
@@ -90,10 +91,25 @@ namespace Aplicacion
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (Capturador == null)
+            {
+                MessageBox.Show("El lector biométrico no está listo.\n" +
+                                "Verifique que esté conectado e intente de nuevo.",
+                                "Lector no disponible",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                return;
+            }
+
             _esperandoHuella = true;
             button3.Enabled = false;
-            labelEstado.Text = "👆 Coloque su dedo en el sensor para marcar la asistencia.";
-            labelEstado.ForeColor = Color.DarkBlue;
+
+            // El label Estado NO cambia — solo indica conectado/desconectado
+            // El aviso al docente va en un MessageBox
+            MessageBox.Show("Coloque su dedo en el sensor para marcar la asistencia.",
+                            "Sensor listo",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
 
             try
             {
@@ -101,11 +117,10 @@ namespace Aplicacion
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show("Error al iniciar captura: " + ex.Message); 
+                _esperandoHuella = false;
+                button3.Enabled = true;
+                MessageBox.Show("Error al iniciar captura: " + ex.Message);
             }
-  
-
         }
 
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
@@ -154,7 +169,7 @@ namespace Aplicacion
                     _esperandoHuella = false;
                     try { Capturador.StopCapture(); } catch { }
                     GuardarRegistroDocente();
-                    MostrarMensaje("✅ Asistencia confirmada.", Color.Green);
+                    MostrarMensaje("Asistencia confirmada.", Color.Green);
 
                     this.Invoke(new Action(() =>
                     {
@@ -164,7 +179,7 @@ namespace Aplicacion
                 }
                 else
                 {
-                    MostrarMensaje("❌ Huella no reconocida, intente nuevamente.", Color.Red);
+                    MostrarMensaje("Huella no reconocida, intente nuevamente.", Color.Red);
                 }
             }
             catch (Exception ex)
@@ -218,10 +233,34 @@ namespace Aplicacion
                 }));
         }
 
-        public void OnFingerGone(object Capture, string ReaderSerialNumber) { }
+        public void OnReaderConnect(object Capture, string ReaderSerialNumber)
+        {
+            ActualizarEstado("• ESTADO DEL SISTEMA: Lector conectado ✔",
+                             System.Drawing.Color.Green);
+        }
+
+        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)
+        {
+            ActualizarEstado("• ESTADO DEL SISTEMA: Lector desconectado ✖",
+                             System.Drawing.Color.Red);
+        }
+
         public void OnFingerTouch(object Capture, string ReaderSerialNumber) { }
-        public void OnReaderConnect(object Capture, string ReaderSerialNumber) { }
-        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber) { }
+        public void OnFingerGone(object Capture, string ReaderSerialNumber) { }
+
+        private void ActualizarEstado(string texto,
+                               System.Drawing.Color colorTexto)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new Action(() => ActualizarEstado(texto, colorTexto)));
+                return;
+            }
+
+            Estado.Text = texto;
+            Estado.ForeColor = colorTexto;
+            Estado.BackColor = System.Drawing.Color.Transparent; // sin sombreado
+        }
         public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback CaptureFeedback) { }
 
     }

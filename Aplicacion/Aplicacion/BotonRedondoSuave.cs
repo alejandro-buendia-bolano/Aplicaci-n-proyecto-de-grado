@@ -2,21 +2,19 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using System.ComponentModel; // Para que aparezca bien en el diseñador
+using System.ComponentModel; 
 
 namespace Aplicacion
 {
-    // Heredamos de Button para tener toda su funcionalidad
     public class BotonRedondoSuave : Button
     {
-        // Propiedades que aparecerán en el diseñador
         [Category("Bordes Personalizados")]
         [Description("El radio de las esquinas.")]
-        public int RadioEsquina { get; set; } = 30; // Valor por defecto
+        public int RadioEsquina { get; set; } = 30; // Será el valor por defecto
 
         [Category("Bordes Personalizados")]
         [Description("El color del borde suavizado.")]
-        public Color ColorBordeSuavizado { get; set; } = Color.FromArgb(100, 100, 100); // Un gris suave opcional
+        public Color ColorBordeSuavizado { get; set; } = Color.FromArgb(100, 100, 100); // color gris suave
 
         [Category("Bordes Personalizados")]
         [Description("Grosor del borde (0 para sin borde).")]

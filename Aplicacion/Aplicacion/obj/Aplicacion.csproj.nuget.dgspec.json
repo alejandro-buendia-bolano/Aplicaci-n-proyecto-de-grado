@@ -50,6 +50,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.1, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -78,7 +82,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.320/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

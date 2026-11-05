@@ -201,134 +201,109 @@ namespace Aplicacion
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlTransaction transaccion = conn.BeginTransaction();
-
+                SqlTransaction tx = conn.BeginTransaction();
                 try
                 {
-                    string queryDocente = @"INSERT INTO Docente (idDocente, primerNombre, segundoNombre, primerApellido, segundoApellido, area) 
-                                    VALUES (@id, @pNombre, @sNombre, @pApellido, @sApellido, @area)";
-
-                    SqlCommand cmdDoc = new SqlCommand(queryDocente, conn, transaccion);
+                    // 1. Insertar docente
+                    string qDoc = @"INSERT INTO Docente
+                            (idDocente, primerNombre, segundoNombre, primerApellido, segundoApellido, area)
+                            VALUES (@id, @pN, @sN, @pA, @sA, @area)";
+                    SqlCommand cmdDoc = new SqlCommand(qDoc, conn, tx);
                     cmdDoc.Parameters.AddWithValue("@id", idDocente.Text);
-                    cmdDoc.Parameters.AddWithValue("@pNombre", primerNombre.Text);
-                    cmdDoc.Parameters.AddWithValue("@sNombre", (object)segundoNombre.Text ?? DBNull.Value);
-                    cmdDoc.Parameters.AddWithValue("@pApellido", primerApellido.Text);
-                    cmdDoc.Parameters.AddWithValue("@sApellido", segundoApellid.Text);
+                    cmdDoc.Parameters.AddWithValue("@pN", primerNombre.Text);
+                    cmdDoc.Parameters.AddWithValue("@sN", string.IsNullOrEmpty(segundoNombre.Text) ? (object)DBNull.Value : segundoNombre.Text);
+                    cmdDoc.Parameters.AddWithValue("@pA", primerApellido.Text);
+                    cmdDoc.Parameters.AddWithValue("@sA", segundoApellid.Text);
                     cmdDoc.Parameters.AddWithValue("@area", area.Text);
                     cmdDoc.ExecuteNonQuery();
 
-                    // Saltamos "-- TODOS LOS GRADOS --" al iterar
+                    // 2. Asociar en Aula_Docente (M:M — un aula puede tener varios docentes)
                     foreach (var item in grados.CheckedItems)
                     {
                         string nombreGrado = item.ToString();
                         if (nombreGrado == "-- TODOS LOS GRADOS --") continue;
 
-                        string queryAula = "UPDATE Aula SET idDocente = @idDocente WHERE nombre = @nombreGrado";
-                        SqlCommand cmdAula = new SqlCommand(queryAula, conn, transaccion);
-                        cmdAula.Parameters.AddWithValue("@idDocente", idDocente.Text);
-                        cmdAula.Parameters.AddWithValue("@nombreGrado", nombreGrado);
-                        cmdAula.ExecuteNonQuery();
+                        // Obtener idAula
+                        SqlCommand cmdId = new SqlCommand(
+                            "SELECT idAula FROM Aula WHERE nombre = @n", conn, tx);
+                        cmdId.Parameters.AddWithValue("@n", nombreGrado);
+                        object idAulaObj = cmdId.ExecuteScalar();
+                        if (idAulaObj == null) continue;
+
+                        // Insertar en Aula_Docente solo si no existe ya
+                        SqlCommand cmdAD = new SqlCommand(
+                            @"IF NOT EXISTS (SELECT 1 FROM Aula_Docente
+                                     WHERE idAula = @idAula AND idDocente = @idDoc)
+                      INSERT INTO Aula_Docente (idAula, idDocente)
+                      VALUES (@idAula, @idDoc)", conn, tx);
+                        cmdAD.Parameters.AddWithValue("@idAula", Convert.ToInt32(idAulaObj));
+                        cmdAD.Parameters.AddWithValue("@idDoc", idDocente.Text);
+                        cmdAD.ExecuteNonQuery();
                     }
 
-                    transaccion.Commit();
-                    MessageBox.Show("Docente agregado y aula asignada correctamente.");
+                    tx.Commit();
+                    MessageBox.Show("Docente agregado correctamente.");
                     ActualizarTabla();
-                    LimpiarFormulario(); // CAMBIO 5
+                    LimpiarFormulario();
                 }
                 catch (Exception ex)
                 {
-                    transaccion.Rollback();
+                    tx.Rollback();
                     MessageBox.Show("Error al agregar: " + ex.Message);
                 }
             }
         }
 
+
         // ═══════════════════════════════════════════════════════════════════════
         //  BOTÓN ELIMINAR  (CAMBIO 4: desligar Aula antes de borrar + CAMBIO 5)
         // ═══════════════════════════════════════════════════════════════════════
+
+        private void EjSqlTx(SqlConnection c, SqlTransaction tx, string sql, string id)
+        {
+            using var cmd = new SqlCommand(sql, c, tx);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
         private void eliminar_Click(object sender, EventArgs e)
         {
             if (dgv1.SelectedRows.Count == 0) return;
 
             string id = dgv1.CurrentRow.Cells["idDocente"].Value.ToString();
 
-            DialogResult confirm = MessageBox.Show(
-                "¿Está seguro que desea eliminar este docente?",
-                "Confirmar eliminación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (confirm != DialogResult.Yes) return;
+            if (MessageBox.Show("¿Eliminar este docente?", "Confirmar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
-
+                SqlTransaction tx = conn.BeginTransaction();
                 try
                 {
-                    // 1. Reasignar las aulas a otro docente o desvincular usando un docente "vacío"
-                    //    Como idDocente en Aula es NOT NULL, simplemente desvinculamos
-                    //    asignando las aulas a ningún docente eliminando el registro de Aula primero
-                    //    o bien: eliminamos los registros de AulaEstudiante relacionados,
-                    //    luego actualizamos Aula con un idDocente temporal no existente.
-                    //    La solución correcta: cambiar la FK en BD a ON DELETE SET NULL,
-                    //    pero como no podemos modificar la BD, eliminamos las Aulas huérfanas
-                    //    y los registros dependientes en cascada.
+                    // 1. Eliminar registros de asistencia del docente
+                    EjSqlTx(conn, tx, "DELETE FROM Registro WHERE idDocente = @id", id);
 
-                    // 1. Eliminar registros de Registro asociados al docente
-                    string queryRegistro = "DELETE FROM Registro WHERE idDocente = @id";
-                    SqlCommand cmdReg = new SqlCommand(queryRegistro, conn, transaction);
-                    cmdReg.Parameters.AddWithValue("@id", id);
-                    cmdReg.ExecuteNonQuery();
+                    // 2. Desvincular de Aula_Docente (NO tocar tabla Aula ni AulaEstudiante)
+                    EjSqlTx(conn, tx, "DELETE FROM Aula_Docente WHERE idDocente = @id", id);
 
-                    // 2. Obtener las aulas del docente
-                    string queryGetAulas = "SELECT idAula FROM Aula WHERE idDocente = @id";
-                    SqlCommand cmdGetAulas = new SqlCommand(queryGetAulas, conn, transaction);
-                    cmdGetAulas.Parameters.AddWithValue("@id", id);
-                    List<int> idsAula = new List<int>();
-                    using (SqlDataReader dr = cmdGetAulas.ExecuteReader())
-                    {
-                        while (dr.Read())
-                            idsAula.Add(Convert.ToInt32(dr["idAula"]));
-                    }
+                    // 3. Desvincular de Aula (poner NULL ahora que la columna es nullable)
+                    EjSqlTx(conn, tx,
+                        "UPDATE Aula SET idDocente = NULL WHERE idDocente = @id", id);
 
-                    // 3. Por cada aula: eliminar AulaEstudiante y luego el Aula misma
-                    foreach (int idAula in idsAula)
-                    {
-                        // Eliminar relaciones AulaEstudiante
-                        string queryAulaEst = "DELETE FROM AulaEstudiante WHERE idAula = @idAula";
-                        SqlCommand cmdAulaEst = new SqlCommand(queryAulaEst, conn, transaction);
-                        cmdAulaEst.Parameters.AddWithValue("@idAula", idAula);
-                        cmdAulaEst.ExecuteNonQuery();
+                    // 4. Eliminar usuario asociado
+                    EjSqlTx(conn, tx, "DELETE FROM Usuario WHERE idDocente = @id", id);
 
-                        // Eliminar el Aula
-                        string queryDelAula = "DELETE FROM Aula WHERE idAula = @idAula";
-                        SqlCommand cmdDelAula = new SqlCommand(queryDelAula, conn, transaction);
-                        cmdDelAula.Parameters.AddWithValue("@idAula", idAula);
-                        cmdDelAula.ExecuteNonQuery();
-                    }
+                    // 5. Eliminar el docente
+                    EjSqlTx(conn, tx, "DELETE FROM Docente WHERE idDocente = @id", id);
 
-                    // 4. Eliminar el Usuario asociado al docente
-                    string queryUsuario = "DELETE FROM Usuario WHERE idDocente = @id";
-                    SqlCommand cmdUser = new SqlCommand(queryUsuario, conn, transaction);
-                    cmdUser.Parameters.AddWithValue("@id", id);
-                    cmdUser.ExecuteNonQuery();
-
-                    // 5. Finalmente eliminar el Docente
-                    string queryDocente = "DELETE FROM Docente WHERE idDocente = @id";
-                    SqlCommand cmdDoc = new SqlCommand(queryDocente, conn, transaction);
-                    cmdDoc.Parameters.AddWithValue("@id", id);
-                    cmdDoc.ExecuteNonQuery();
-
-                    transaction.Commit();
-                    MessageBox.Show("Docente eliminado correctamente.");
+                    tx.Commit();
+                    MessageBox.Show("Docente eliminado. Las aulas y sus estudiantes no fueron afectados.");
                     ActualizarTabla();
                     LimpiarFormulario();
                 }
                 catch (Exception ex)
                 {
-                    transaction.Rollback();
+                    tx.Rollback();
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }
@@ -455,20 +430,8 @@ namespace Aplicacion
                     return;
                 }
 
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    string filtroGrados = string.Join("','", seleccionados);
-                    string query = $@"SELECT DISTINCT D.idDocente, D.primerNombre, D.segundoNombre, 
-                                              D.primerApellido, D.segundoApellido
-                             FROM Docente D
-                             INNER JOIN Aula A ON D.idDocente = A.idDocente
-                             WHERE A.nombre IN ('{filtroGrados}')";
-
-                    SqlDataAdapter adp = new SqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    dgv1.DataSource = dt;
-                }
+                FiltrarPorGrados(seleccionados);
+                
             }));
         }
 
@@ -477,39 +440,52 @@ namespace Aplicacion
         // ═══════════════════════════════════════════════════════════════════════
         private void verRegistros_Click(object sender, EventArgs e)
         {
-            if (grados.CheckedItems.Count == 0)
-            {
-                MessageBox.Show("Seleccione al menos un grado.");
-                return;
-            }
-
             List<string> seleccionados = grados.CheckedItems.Cast<string>()
                                                 .Where(g => g != "-- TODOS LOS GRADOS --")
                                                 .ToList();
 
-            if (seleccionados.Count == 0)
-            {
-                ActualizarTabla();
-                return;
-            }
+            if (seleccionados.Count == 0) { ActualizarTabla(); LimpiarFormulario(); return; }
 
             string filtroSQL = string.Join("','", seleccionados);
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = $@"SELECT DISTINCT D.idDocente, D.primerNombre, D.segundoNombre, 
-                                          D.primerApellido, D.segundoApellido
-                          FROM Docente D
-                          INNER JOIN Aula A ON D.idDocente = A.idDocente
-                          WHERE A.nombre IN ('{filtroSQL}')";
-
+                // Usa Aula_Docente para la relación M:M
+                string query = $@"SELECT DISTINCT D.idDocente, D.primerNombre, D.segundoNombre,
+                                  D.primerApellido, D.segundoApellido
+                   FROM Docente D
+                   INNER JOIN Aula_Docente AD ON D.idDocente = AD.idDocente
+                   INNER JOIN Aula A           ON AD.idAula  = A.idAula
+                   WHERE A.nombre IN ('{filtroSQL}')";
                 SqlDataAdapter adp = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dgv1.DataSource = dt;
                 ConfigurarEstiloDgv();
             }
+
+            LimpiarFormulario(); // Bug 4
         }
+
+        private void FiltrarPorGrados(List<string> seleccionados)
+        {
+            if (seleccionados.Count == 0) { ActualizarTabla(); return; }
+
+            string filtro = string.Join("','", seleccionados);
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = $@"SELECT DISTINCT D.idDocente, D.primerNombre, D.segundoNombre,
+                                  D.primerApellido, D.segundoApellido
+                   FROM Docente D
+                   INNER JOIN Aula_Docente AD ON D.idDocente = AD.idDocente
+                   INNER JOIN Aula A           ON AD.idAula  = A.idAula
+                   WHERE A.nombre IN ('{filtro}')";
+                SqlDataAdapter adp = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dgv1.DataSource = dt;
+            }
+        }
+
 
         // ═══════════════════════════════════════════════════════════════════════
         //  REGISTRO DE HUELLA  (sin cambios funcionales)

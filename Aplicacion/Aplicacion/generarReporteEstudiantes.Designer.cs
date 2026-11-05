@@ -41,6 +41,7 @@
             button2 = new Button();
             button3 = new Button();
             dataGridView1 = new DataGridView();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -99,7 +100,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(278, 86);
+            label3.Location = new Point(257, 86);
             label3.Name = "label3";
             label3.Size = new Size(42, 21);
             label3.TabIndex = 2;
@@ -110,7 +111,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(481, 86);
+            label4.Location = new Point(460, 86);
             label4.Name = "label4";
             label4.Size = new Size(151, 21);
             label4.TabIndex = 3;
@@ -133,7 +134,7 @@
             comboBox2.BackColor = Color.FromArgb(235, 233, 231);
             comboBox2.Font = new Font("Segoe UI", 10F);
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(278, 110);
+            comboBox2.Location = new Point(257, 110);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(152, 25);
             comboBox2.TabIndex = 5;
@@ -145,7 +146,7 @@
             comboBox3.BackColor = Color.FromArgb(235, 233, 231);
             comboBox3.Font = new Font("Segoe UI", 10F);
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(481, 110);
+            comboBox3.Location = new Point(460, 110);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(181, 25);
             comboBox3.TabIndex = 6;
@@ -156,9 +157,9 @@
             // 
             button2.BackColor = Color.FromArgb(235, 233, 231);
             button2.Font = new Font("Segoe UI", 11F);
-            button2.Location = new Point(717, 86);
+            button2.Location = new Point(657, 86);
             button2.Name = "button2";
-            button2.Size = new Size(123, 49);
+            button2.Size = new Size(105, 60);
             button2.TabIndex = 7;
             button2.Text = "Generar reporte";
             button2.UseVisualStyleBackColor = false;
@@ -168,9 +169,9 @@
             // 
             button3.BackColor = Color.FromArgb(235, 233, 231);
             button3.Font = new Font("Segoe UI", 11F);
-            button3.Location = new Point(866, 86);
+            button3.Location = new Point(778, 86);
             button3.Name = "button3";
-            button3.Size = new Size(123, 48);
+            button3.Size = new Size(97, 60);
             button3.TabIndex = 8;
             button3.Text = "Exportar PDF";
             button3.UseVisualStyleBackColor = false;
@@ -184,12 +185,25 @@
             dataGridView1.Size = new Size(939, 439);
             dataGridView1.TabIndex = 9;
             // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(235, 233, 231);
+            button4.Font = new Font("Segoe UI", 11F);
+            button4.Location = new Point(891, 86);
+            button4.Name = "button4";
+            button4.Size = new Size(95, 60);
+            button4.TabIndex = 10;
+            button4.Text = "Exportar Excel";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
             // generarReporteEstudiantes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(251, 249, 248);
             ClientSize = new Size(1008, 729);
+            Controls.Add(button4);
             Controls.Add(dataGridView1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -223,5 +237,6 @@
         private Button button2;
         private Button button3;
         private DataGridView dataGridView1;
+        private Button button4;
     }
 }

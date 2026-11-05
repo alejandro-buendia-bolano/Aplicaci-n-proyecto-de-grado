@@ -40,6 +40,7 @@
             label2 = new Label();
             label3 = new Label();
             labelEstado = new Label();
+            Estado = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -160,12 +161,24 @@
             labelEstado.TabIndex = 7;
             labelEstado.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // Estado
+            // 
+            Estado.AutoSize = true;
+            Estado.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Estado.ForeColor = Color.FromArgb(68, 74, 149);
+            Estado.Location = new Point(55, 225);
+            Estado.Name = "Estado";
+            Estado.Size = new Size(221, 25);
+            Estado.TabIndex = 13;
+            Estado.Text = "• ESTADO DEL SISTEMA";
+            // 
             // asistenciaDocentes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(251, 249, 248);
             ClientSize = new Size(1008, 729);
+            Controls.Add(Estado);
             Controls.Add(labelEstado);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -177,6 +190,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -191,5 +205,6 @@
         private Label label2;
         private Label label3;
         private Label labelEstado;
+        private Label Estado;
     }
 }

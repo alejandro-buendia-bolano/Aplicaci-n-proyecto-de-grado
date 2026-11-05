@@ -43,7 +43,12 @@
             button2 = new Button();
             Estado = new Label();
             btnDetener = new Button();
+            dgvLista = new DataGridView();
+            btnMarcarID = new Button();
+            lblContador = new Label();
+            txtIdManual = new TextBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvLista).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -165,11 +170,11 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             button2.ForeColor = SystemColors.Control;
-            button2.Location = new Point(574, 514);
+            button2.Location = new Point(476, 541);
             button2.Name = "button2";
-            button2.Size = new Size(309, 52);
+            button2.Size = new Size(209, 80);
             button2.TabIndex = 10;
-            button2.Text = "Registrar asistencia";
+            button2.Text = "Registrar asistencia por huella";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
@@ -193,13 +198,62 @@
             btnDetener.FlatStyle = FlatStyle.Flat;
             btnDetener.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             btnDetener.ForeColor = SystemColors.Control;
-            btnDetener.Location = new Point(190, 514);
+            btnDetener.Location = new Point(161, 541);
             btnDetener.Name = "btnDetener";
-            btnDetener.Size = new Size(309, 52);
+            btnDetener.Size = new Size(212, 80);
             btnDetener.TabIndex = 13;
             btnDetener.Text = "Detener asistencia";
             btnDetener.UseVisualStyleBackColor = false;
             btnDetener.Click += btnDetener_Click;
+            // 
+            // dgvLista
+            // 
+            dgvLista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLista.Location = new Point(302, 66);
+            dgvLista.Name = "dgvLista";
+            dgvLista.Size = new Size(435, 407);
+            dgvLista.TabIndex = 14;
+            dgvLista.Visible = false;
+            dgvLista.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnMarcarID
+            // 
+            btnMarcarID.BackColor = Color.FromArgb(47, 74, 160);
+            btnMarcarID.FlatAppearance.BorderColor = Color.Black;
+            btnMarcarID.FlatAppearance.MouseDownBackColor = Color.FromArgb(47, 74, 160);
+            btnMarcarID.FlatAppearance.MouseOverBackColor = Color.FromArgb(47, 74, 160);
+            btnMarcarID.FlatStyle = FlatStyle.Flat;
+            btnMarcarID.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
+            btnMarcarID.ForeColor = SystemColors.Control;
+            btnMarcarID.Location = new Point(768, 541);
+            btnMarcarID.Name = "btnMarcarID";
+            btnMarcarID.Size = new Size(209, 80);
+            btnMarcarID.TabIndex = 15;
+            btnMarcarID.Text = "Registrar asistencia por ID";
+            btnMarcarID.UseVisualStyleBackColor = false;
+            btnMarcarID.Click += btnMarcarID_Click;
+            // 
+            // lblContador
+            // 
+            lblContador.AutoSize = true;
+            lblContador.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblContador.ForeColor = Color.FromArgb(68, 74, 149);
+            lblContador.Location = new Point(476, 496);
+            lblContador.Name = "lblContador";
+            lblContador.Size = new Size(0, 21);
+            lblContador.TabIndex = 16;
+            lblContador.Visible = false;
+            // 
+            // txtIdManual
+            // 
+            txtIdManual.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtIdManual.Location = new Point(317, 436);
+            txtIdManual.Name = "txtIdManual";
+            txtIdManual.Size = new Size(140, 29);
+            txtIdManual.TabIndex = 17;
+            txtIdManual.Visible = false;
+            txtIdManual.TextChanged += txtIdManual_TextChanged;
+            txtIdManual.KeyDown += txtIdManual_KeyDown;
             // 
             // AsistenciaEstudiantes
             // 
@@ -207,6 +261,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(246, 243, 242);
             ClientSize = new Size(1008, 729);
+            Controls.Add(txtIdManual);
+            Controls.Add(lblContador);
+            Controls.Add(btnMarcarID);
+            Controls.Add(dgvLista);
             Controls.Add(btnDetener);
             Controls.Add(Estado);
             Controls.Add(button2);
@@ -220,6 +278,7 @@
             Name = "AsistenciaEstudiantes";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvLista).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -239,5 +298,9 @@
         private Button button2;
         private Label Estado;
         private Button btnDetener;
+        private DataGridView dgvLista;
+        private Button btnMarcarID;
+        private Label lblContador;
+        private TextBox txtIdManual;
     }
 }

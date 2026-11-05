@@ -41,6 +41,7 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -95,9 +96,9 @@
             // 
             button3.BackColor = Color.FromArgb(235, 233, 231);
             button3.Font = new Font("Segoe UI", 11F);
-            button3.Location = new Point(862, 96);
+            button3.Location = new Point(786, 96);
             button3.Name = "button3";
-            button3.Size = new Size(123, 48);
+            button3.Size = new Size(85, 61);
             button3.TabIndex = 18;
             button3.Text = "Exportar PDF";
             button3.UseVisualStyleBackColor = false;
@@ -107,9 +108,9 @@
             // 
             button2.BackColor = Color.FromArgb(235, 233, 231);
             button2.Font = new Font("Segoe UI", 11F);
-            button2.Location = new Point(713, 96);
+            button2.Location = new Point(660, 96);
             button2.Name = "button2";
-            button2.Size = new Size(123, 49);
+            button2.Size = new Size(102, 61);
             button2.TabIndex = 17;
             button2.Text = "Generar reporte";
             button2.UseVisualStyleBackColor = false;
@@ -120,7 +121,7 @@
             comboBox3.BackColor = Color.FromArgb(235, 233, 231);
             comboBox3.Font = new Font("Segoe UI", 10F);
             comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(477, 120);
+            comboBox3.Location = new Point(460, 120);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Size(181, 25);
             comboBox3.TabIndex = 16;
@@ -132,7 +133,7 @@
             comboBox2.BackColor = Color.FromArgb(235, 233, 231);
             comboBox2.Font = new Font("Segoe UI", 10F);
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(274, 120);
+            comboBox2.Location = new Point(257, 120);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(152, 25);
             comboBox2.TabIndex = 15;
@@ -156,7 +157,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.DimGray;
-            label4.Location = new Point(477, 96);
+            label4.Location = new Point(460, 96);
             label4.Name = "label4";
             label4.Size = new Size(151, 21);
             label4.TabIndex = 13;
@@ -167,7 +168,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(274, 96);
+            label3.Location = new Point(257, 96);
             label3.Name = "label3";
             label3.Size = new Size(42, 21);
             label3.TabIndex = 12;
@@ -184,11 +185,24 @@
             label2.TabIndex = 11;
             label2.Text = "DOCENTE";
             // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(235, 233, 231);
+            button4.Font = new Font("Segoe UI", 11F);
+            button4.Location = new Point(889, 96);
+            button4.Name = "button4";
+            button4.Size = new Size(85, 61);
+            button4.TabIndex = 20;
+            button4.Text = "Exportar Excel";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
             // generarReporteDocentes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1008, 729);
+            Controls.Add(button4);
             Controls.Add(panel1);
             Controls.Add(dataGridView1);
             Controls.Add(button3);
@@ -222,5 +236,6 @@
         private Label label4;
         private Label label3;
         private Label label2;
+        private Button button4;
     }
 }

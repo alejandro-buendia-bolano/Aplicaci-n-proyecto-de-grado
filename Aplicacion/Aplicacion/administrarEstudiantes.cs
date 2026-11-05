@@ -197,7 +197,41 @@ namespace Aplicacion
 
             idEstudiante.ReadOnly = true;
             ActualizarColorBotonHuella(idEst);
+
+            // ── Bug 3: marcar automáticamente el grado del estudiante ─────────────
+            for (int i = 0; i < grados.Items.Count; i++)
+                grados.SetItemChecked(i, false);
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(
+                        @"SELECT A.nombre
+                  FROM AulaEstudiante AE
+                  INNER JOIN Aula A ON AE.idAula = A.idAula
+                  WHERE AE.idEstudiante = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", idEst);
+
+                    var aulasBD = new List<string>();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                        while (dr.Read())
+                            aulasBD.Add(dr["nombre"].ToString());
+
+                    _actualizandoCheck = true;
+                    for (int i = 0; i < grados.Items.Count; i++)
+                    {
+                        string item = grados.Items[i].ToString();
+                        if (aulasBD.Contains(item))
+                            grados.SetItemChecked(i, true);
+                    }
+                    _actualizandoCheck = false;
+                }
+            }
+            catch { _actualizandoCheck = false; }
         }
+
 
         // ── CheckedListBox ──────────────────────────────────────────────────────
         private void Grados_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -508,21 +542,50 @@ namespace Aplicacion
 
         private void verRegistros_Click_1(object sender, EventArgs e)
         {
-            List<string> seleccionados = grados.CheckedItems.Cast<string>()
-                                                .Where(g => g != "-- TODOS LOS GRADOS --")
-                                                .ToList();
-            if (seleccionados.Count == 0) { ActualizarTabla(); return; }
+            // Si idEstudiante tiene un valor, buscar solo ese estudiante
+            string busqueda = idEstudiante.Text.Trim();
 
-            string filtroSQL = string.Join("','", seleccionados);
+            List<string> gradosSeleccionados = grados.CheckedItems.Cast<string>()
+                                                     .Where(g => g != "-- TODOS LOS GRADOS --")
+                                                     .ToList();
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = $@"SELECT DISTINCT E.idEstudiante, E.primerNombre, E.segundoNombre,
-                                         E.primerApellido, E.segundoApellido
-                          FROM Estudiante E
-                          INNER JOIN AulaEstudiante AE ON E.idEstudiante = AE.idEstudiante
-                          INNER JOIN Aula A ON AE.idAula = A.idAula
-                          WHERE A.nombre IN ('{filtroSQL}')";
-                SqlDataAdapter adp = new SqlDataAdapter(query, conn);
+                string query;
+                SqlCommand cmd;
+
+                if (!string.IsNullOrEmpty(busqueda))
+                {
+                    // Buscar por identificación específica
+                    query = @"SELECT idEstudiante, primerNombre, segundoNombre,
+                             primerApellido, segundoApellido
+                      FROM Estudiante
+                      WHERE CAST(idEstudiante AS VARCHAR) LIKE @busqueda
+                      ORDER BY primerApellido, primerNombre";
+                    cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@busqueda", busqueda + "%");
+                }
+                else if (gradosSeleccionados.Count > 0)
+                {
+                    // Filtrar por grado seleccionado
+                    string filtroSQL = string.Join("','", gradosSeleccionados);
+                    query = $@"SELECT DISTINCT E.idEstudiante, E.primerNombre, E.segundoNombre,
+                              E.primerApellido, E.segundoApellido
+                       FROM Estudiante E
+                       INNER JOIN AulaEstudiante AE ON E.idEstudiante = AE.idEstudiante
+                       INNER JOIN Aula A             ON AE.idAula     = A.idAula
+                       WHERE A.nombre IN ('{filtroSQL}')
+                       ORDER BY E.primerApellido, E.primerNombre";
+                    cmd = new SqlCommand(query, conn);
+                }
+                else
+                {
+                    // Sin filtro → todos
+                    ActualizarTabla();
+                    return;
+                }
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 dataGridView1.DataSource = dt;

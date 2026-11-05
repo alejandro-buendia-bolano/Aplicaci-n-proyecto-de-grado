@@ -72,3 +72,12 @@ C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplic
 C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\DPFPVerNET.dll
 C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
 C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\itextsharp.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\obj\Debug\net8.0-windows\Aplicacion.sourcelink.json
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\ClosedXML.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\ClosedXML.Parser.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\ExcelNumberFormat.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\RBush.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
+C:\Users\qmass\OneDrive\Documentos\PROYECTO DE GRADO\Fase 3 Implementacion\Aplicacion\Aplicacion\bin\Debug\net8.0-windows\System.IO.Packaging.dll

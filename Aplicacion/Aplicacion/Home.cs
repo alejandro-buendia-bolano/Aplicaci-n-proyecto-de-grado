@@ -12,22 +12,14 @@ namespace Aplicacion
         public Home(string nombre, int idDoc)
         {
             InitializeComponent();
-
-            InitializeComponent();
-
-            // Guardamos en las variables de la clase
+            timer1.Tick += new EventHandler(timer1_Tick);
             this.NombreDocente = nombre;
             this.idDocente = idDoc;
-
-            ConfigurarDiseno();
             timer1.Start();
             ActualizarFechaHora();
-
-            // Actualizamos el label inmediatamente
             label3.Text = "Bienvenido, " + this.NombreDocente;
         }
 
-        // Creacion de metodo independiente para no repetir codigo
         private void ActualizarFechaHora()
         {
             label7.Text = DateTime.Now.ToString("hh:mm tt");

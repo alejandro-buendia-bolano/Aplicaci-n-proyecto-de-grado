@@ -70,9 +70,9 @@
             label2.ForeColor = Color.FromArgb(17, 49, 136);
             label2.Location = new Point(27, 74);
             label2.Name = "label2";
-            label2.Size = new Size(153, 40);
+            label2.Size = new Size(286, 40);
             label2.TabIndex = 1;
-            label2.Text = "{Nombre}";
+            label2.Text = "Bienvenido, MARIO";
             // 
             // label3
             // 
